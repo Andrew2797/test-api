@@ -32,8 +32,6 @@ def post(self):
     return answer
 
 
-
-
     def put(self, id):
         parser = reqparse.RequestParser()
         parser.add_argument("gp")
@@ -44,6 +42,7 @@ def post(self):
         answer.status_code = 200
         return answer
 
+    
     def delete(self, id):
         answer = jsonify(db_actions.delete_race(id))
         answer.status_code = 200
