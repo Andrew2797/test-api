@@ -19,17 +19,20 @@ class Race(Resource):
         if race:
             return row_to_json([race])
 
-        return "Відсутні статті"
+        return "Відсутна гонка"
 
-    def race(self):
-        parser = reqparse.RequestParser()
-        parser.add_argument("gp")
-        parser.add_argument("laps")
-        params = parser.parse_args()
-        id = db_actions.add_race(**params)
-        answer = jsonify(f"Гонку успішно додано під id {id}")
-        answer.status_code = 200
-        return answer
+def post(self):
+    parser = reqparse.RequestParser()
+    parser.add_argument("gp")
+    parser.add_argument("laps")
+    params = parser.parse_args()
+    id = db_actions.add_race(**params)
+    answer = jsonify(f"Гонку успішно додано під id {id}")
+    answer.status_code = 200
+    return answer
+
+
+
 
     def put(self, id):
         parser = reqparse.RequestParser()
